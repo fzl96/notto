@@ -41,6 +41,7 @@ const NewNoteModal = ({ onClose }: NewNoteProps) => {
         >
           {/* <Picker onEmojiClick={onEmojiClick} /> */}
           <TextareaAutosize
+            autoFocus
             className="text-4xl resize-none bg-transparent focus:outline-none font-semibold w-full"
             placeholder="untitled"
             onChange={(e) => setTitle(e.target.value)}

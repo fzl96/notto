@@ -7,14 +7,14 @@ import { enableIndexedDbPersistence, getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  databaseURL: process.env.DATABASE_URL,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-  measurementId: process.env.MEASUREMENT_ID,
+  apiKey: "AIzaSyBbOSwCNrdc5HFJRXteifz9PsIPjyol8po",
+  authDomain: "notebook-app-be5fa.firebaseapp.com",
+  databaseURL: "https://notebook-app-be5fa-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "notebook-app-be5fa",
+  storageBucket: "notebook-app-be5fa.appspot.com",
+  messagingSenderId: "143853238727",
+  appId: "1:143853238727:web:df9d11d48e78a2098441e2",
+  measurementId: "G-ZT4XER6BMM"
 };
 
 // Initialize Firebase
@@ -23,11 +23,11 @@ const db = getFirestore(app)
 
 enableIndexedDbPersistence(db)
   .catch((err) => {
-      if (err.code == 'failed-precondition') {
+      if (err.code === 'failed-precondition') {
           // Multiple tabs open, persistence can only be enabled
           // in one tab at a a time.
           // ...
-      } else if (err.code == 'unimplemented') {
+      } else if (err.code === 'unimplemented') {
           // The current browser does not support all of the
           // features required to enable persistence
           // ...

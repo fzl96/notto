@@ -4,6 +4,7 @@ export interface NoteType {
   body: string,
   createdAt: any
 }
+
 export interface NotesContextType {
   notes: NoteType[];
 }

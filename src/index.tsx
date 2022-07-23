@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import { NotesContextProvider } from "./context/NotesContext";
+import { NotesContextProvider } from "./pages/app/notes/context/NotesContext";
 import { BrowserRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 

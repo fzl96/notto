@@ -5,18 +5,9 @@ import {
   useState,
   useContext,
 } from "react";
-import { db } from "../config/firebase";
-import {
-  collection,
-  query,
-  onSnapshot,
-  orderBy,
-  // doc,
-  // updateDoc,
-  // deleteDoc,
-  // QuerySnapshot,
-} from "firebase/firestore";
-import type { NoteType } from "../utils/types";
+import { db } from "../../../../config/firebase";
+import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
+import type { NoteType } from "../../../../utils/types";
 
 export const NotesContext = createContext<NoteType[]>([]);
 
@@ -25,7 +16,7 @@ export const NotesContextProvider = ({ children }: any) => {
 
   useEffect(() => {
     const noteRef = collection(db, "notes");
-    const q = query(noteRef, orderBy("createdAt", 'desc'));
+    const q = query(noteRef, orderBy("createdAt", "desc"));
     const unsub = onSnapshot(q, (querySnapshot) => {
       let notesArray: any = [];
       querySnapshot.forEach((doc) => {
@@ -40,3 +31,5 @@ export const NotesContextProvider = ({ children }: any) => {
     <NotesContext.Provider value={notes}>{children}</NotesContext.Provider>
   );
 };
+
+export const useNotesContext = () => useContext(NotesContext);

@@ -1,10 +1,9 @@
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Card from "../../../components/notes/Card";
 import NewNoteButton from "../../../components/notes/NewNoteButton";
 import NewNoteModal from "../../../components/notes/NewNoteModal";
-import { useNotesContext } from "../../../hooks/UseNotesContext";
+import { useNotesContext } from "./context/NotesContext";
 import { NoteType } from "../../../utils/types";
 import { motion } from "framer-motion";
 
@@ -26,7 +25,7 @@ const Notes = () => {
           {pinnedNotes.length !== 0 ? (
             <>
               <h1 className="text-2xl  font-semibold ml-1">Pinned</h1>
-              <motion.div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+              <motion.div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                 {pinnedNotes.map((note) => {
                   return <Card note={note} />;
                 })}
@@ -36,7 +35,7 @@ const Notes = () => {
         </div>
         <div className="flex flex-col gap-5">
           <h1 className="text-2xl font-semibold ml-1">Recent notes</h1>
-          <div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
             {notes.map((note: NoteType, index: number) => {
               // if (index > 2) return null;
               if (note.pinned) return null;

@@ -1,16 +1,11 @@
 import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
-import { useState } from "react";
-import TextareaAutosize from "react-textarea-autosize";
-
+import NewNoteForm from "./NewNoteForm";
 interface NewNoteProps {
   onClose: () => void;
 }
 
 const NewNoteModal = ({ onClose }: NewNoteProps) => {
-  const [title, setTitle] = useState("untitled");
-  const [body, setBody] = useState("empty");
-
   return (
     <Modal onClose={onClose}>
       <div className="flex flex-col h-full pt-3">
@@ -35,23 +30,7 @@ const NewNoteModal = ({ onClose }: NewNoteProps) => {
             </div>
           </div>
         </div>
-        <form
-          className={`w-full flex flex-col gap-5 bg-white h-full rounded-2xl pt-10 lg:px-20 px-7`}
-          // onSubmit={handleSubmit}
-        >
-          {/* <Picker onEmojiClick={onEmojiClick} /> */}
-          <TextareaAutosize
-            autoFocus
-            className="text-4xl resize-none bg-transparent focus:outline-none font-semibold w-full"
-            placeholder="untitled"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <TextareaAutosize
-            className="text-xl resize-none bg-transparent focus:outline-none  w-full"
-            placeholder="type something here"
-            onChange={(e) => setBody(e.target.value)}
-          />
-        </form>
+        <NewNoteForm />
       </div>
     </Modal>
   );

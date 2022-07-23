@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useNotesContext } from "../../../hooks/UseNotesContext";
+import { useNotesContext } from "./context/NotesContext";
 import type { NoteType } from "../../../utils/types";
 import { format } from "date-fns";
 

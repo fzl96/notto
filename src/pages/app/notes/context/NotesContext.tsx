@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useEffect,
-  useReducer,
-  useState,
-  useContext,
-} from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { db } from "../../../../config/firebase";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import type { NoteType } from "../../../../utils/types";
@@ -26,6 +20,7 @@ export const NotesContextProvider = ({ children }: any) => {
     });
     return () => unsub();
   }, []);
+
 
   return (
     <NotesContext.Provider value={notes}>{children}</NotesContext.Provider>

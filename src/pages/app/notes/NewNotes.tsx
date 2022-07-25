@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import { db } from "../../../config/firebase";
-import Picker from 'emoji-picker-react';
+import Picker from "emoji-picker-react";
 
 const NewNotes = () => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -15,7 +15,6 @@ const NewNotes = () => {
   const onEmojiClick = (event: any, emojiObject: any) => {
     setChosenEmoji(emojiObject);
   };
-
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -38,7 +37,6 @@ const NewNotes = () => {
         className={`w-full flex flex-col gap-5 bg-white h-full rounded-2xl pt-10 lg:px-20 px-7`}
         onSubmit={handleSubmit}
       >
-      
         <TextareaAutosize
           className="text-5xl resize-none bg-transparent focus:outline-none font-semibold w-full"
           placeholder="untitled"

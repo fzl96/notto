@@ -21,7 +21,7 @@ const CardMenu = ({ onDelete }: Props) => {
 
       <Divider />
       <Menu.Item color="red">
-        <button onClick={onDelete}>Delete note</button>
+        {/* <button onClick={onDelete}>Delete note</button> */}
       </Menu.Item>
     </Menu>
   );

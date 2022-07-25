@@ -1,38 +1,17 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { enableIndexedDbPersistence, getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBbOSwCNrdc5HFJRXteifz9PsIPjyol8po",
-  authDomain: "notebook-app-be5fa.firebaseapp.com",
-  databaseURL: "https://notebook-app-be5fa-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "notebook-app-be5fa",
-  storageBucket: "notebook-app-be5fa.appspot.com",
-  messagingSenderId: "143853238727",
-  appId: "1:143853238727:web:df9d11d48e78a2098441e2",
-  measurementId: "G-ZT4XER6BMM"
+  apiKey: "AIzaSyCUvvTsh7WMMsC-JjlUTUZnl1RXSNJaBp4",
+  authDomain: "notto-ead87.firebaseapp.com",
+  projectId: "notto-ead87",
+  storageBucket: "notto-ead87.appspot.com",
+  messagingSenderId: "548144945450",
+  appId: "1:548144945450:web:f58b3a99eb0d49ce3c6653"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
-
-enableIndexedDbPersistence(db)
-  .catch((err) => {
-      if (err.code === 'failed-precondition') {
-          // Multiple tabs open, persistence can only be enabled
-          // in one tab at a a time.
-          // ...
-      } else if (err.code === 'unimplemented') {
-          // The current browser does not support all of the
-          // features required to enable persistence
-          // ...
-      }
-  });
-
 
 export { db }; 

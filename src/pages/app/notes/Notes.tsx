@@ -6,6 +6,8 @@ import NewNoteModal from "../../../components/notes/NewNoteModal";
 import { useNotesContext } from "./context/NotesContext";
 import { NoteType } from "../../../utils/types";
 import { motion } from "framer-motion";
+import NoteForm from "../../../components/notes/NoteForm";
+import { Link } from "react-router-dom";
 
 const Notes = () => {
   const [open, setOpen] = useState(false);
@@ -15,8 +17,6 @@ const Notes = () => {
   useEffect(() => {
     setPinnedNotes(notes.filter((note) => note.pinned));
   }, [notes]);
-
-  console.log(pinnedNotes);
 
   return (
     <>
@@ -39,17 +39,21 @@ const Notes = () => {
             {notes.map((note: NoteType, index: number) => {
               // if (index > 2) return null;
               if (note.pinned) return null;
-              return <Card key={note.id} note={note} />;
+              return (
+                <Link to={`${note.id}`} key={note.id}>
+                  <Card note={note} />
+                </Link>
+              );
             })}
-            <button onClick={() => setOpen(true)}>
+            <Link to="new">
               <NewNoteButton />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {open && <NewNoteModal onClose={() => setOpen(false)} />}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </>
   );
 };

@@ -32,7 +32,7 @@ const Card: React.FC<Props> = ({ note }) => {
         dark ? "bg-grayishDark" : "bg-white"
       } rounded-2xl pt-2 px-5 pb-5 shadow-sm min-h-[12rem] flex flex-col justify-between`}
     >
-      <div className="flex justify-end">
+      <div className="flex gap-3 items-center justify-end">
         {note.pinned ? (
           <button onClick={() => pinNote(note.id, note.pinned)}>
             <BsPinAngleFill />

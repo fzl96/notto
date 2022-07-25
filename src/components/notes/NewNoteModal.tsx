@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 import NewNoteForm from "./NewNoteForm";
+import { RichTextEditor } from "@mantine/rte";
+import { useState } from "react";
+
 interface NewNoteProps {
   onClose: () => void;
 }
 
+const initialValue =
+  "<p>Your initial <b>html value</b> or an empty string to init editor without value</p>";
+
 const NewNoteModal = ({ onClose }: NewNoteProps) => {
+  const [value, onChange] = useState(initialValue);
+
   return (
     <Modal onClose={onClose}>
       <div className="flex flex-col h-full pt-3">
@@ -30,7 +38,8 @@ const NewNoteModal = ({ onClose }: NewNoteProps) => {
             </div>
           </div>
         </div>
-        <NewNoteForm />
+        <RichTextEditor value={value} onChange={onChange} />;
+        {/* <NewNoteForm /> */}
       </div>
     </Modal>
   );

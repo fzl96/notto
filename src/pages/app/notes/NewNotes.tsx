@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import { db } from "../../../config/firebase";
 import Picker from "emoji-picker-react";
+import Tiptap from "../../../components/notes/Tiptap";
 
 const NewNotes = () => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -27,6 +28,7 @@ const NewNotes = () => {
       title,
       body,
       createdAt: Timestamp.fromDate(currentDate),
+      pinned: false,
     });
     return navigate(`/app/notes/${newNote.id}`);
   };
@@ -37,16 +39,18 @@ const NewNotes = () => {
         className={`w-full flex flex-col gap-5 bg-white h-full rounded-2xl pt-10 lg:px-20 px-7`}
         onSubmit={handleSubmit}
       >
+        <button type="submit">Submit</button>
         <TextareaAutosize
           className="text-5xl resize-none bg-transparent focus:outline-none font-semibold w-full"
           placeholder="untitled"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <TextareaAutosize
+        <Tiptap />
+        {/* <TextareaAutosize
           className="text-2xl resize-none bg-transparent focus:outline-none  w-full"
           placeholder="type something here"
           onChange={(e) => setBody(e.target.value)}
-        />
+        /> */}
       </form>
     </>
   );

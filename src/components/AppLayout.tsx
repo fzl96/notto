@@ -35,7 +35,7 @@ const Shell: React.FC<Props> = ({ children }) => {
           background:
             theme.colorScheme === "dark"
               ? theme.colors.dark[7]
-              : "#f4f5f7",
+              : "#d6eff6",
         },
       }}
       navbarOffsetBreakpoint="sm"
@@ -48,7 +48,7 @@ const Shell: React.FC<Props> = ({ children }) => {
           width={{ sm: 370, lg: 370 }}
           styles={{
             root: {
-              background: dark ? theme.colors.dark[8] : "#fff",
+              background: dark ? theme.colors.dark[8] : "#d6eff6",
               border: "none",
             },
           }}

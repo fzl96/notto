@@ -1,5 +1,17 @@
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
+import { doc, addDoc, updateDoc, deleteDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../config/firebase";
+
+export const addNote = async ({ title, body }: {title: string, body: string}) => {
+  const currentDate = new Date();
+  const newNote =  await addDoc(collection(db, "notes"), {
+    title,
+    body,
+    createdAt: Timestamp.fromDate(currentDate),
+    pinned: false,
+  });
+  return newNote.id;
+}
 
 export const pinNote = async (noteId: string, isPinned: boolean) => {
   try {

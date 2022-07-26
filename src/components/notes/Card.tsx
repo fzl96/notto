@@ -54,7 +54,7 @@ const Card: React.FC<Props> = ({ note }) => {
       <div className="flex flex-col justify-between h-full">
         <div>
           <h3 className="text-lg font-semibold">{note.title}</h3>
-          <p className="text-md">{removeHTMLTags(note.body)}</p>
+          <p className="text-md">{removeHTMLTags(note.body).slice(0, 70)}</p>
         </div>
         <div className="flex items-center gap-3">
           <AiOutlineCalendar />

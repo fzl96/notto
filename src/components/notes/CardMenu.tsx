@@ -1,12 +1,14 @@
 import { Menu, Divider, Text, Button } from "@mantine/core";
 import { MenuDropdown } from "@mantine/core/lib/Menu/MenuDropdown/MenuDropdown";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   onDelete: () => void;
 }
 
 const CardMenu = ({ onDelete }: Props) => {
+  const navigate = useNavigate();
   return (
     <Menu>
       <Menu.Target>
@@ -15,18 +17,7 @@ const CardMenu = ({ onDelete }: Props) => {
         </p>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item>Settings</Menu.Item>
-        <Menu.Item
-          rightSection={
-            <Text size="xs" color="dimmed">
-              ⌘K
-            </Text>
-          }
-        >
-          Search
-        </Menu.Item>
-
+        <Menu.Item>Edit</Menu.Item>
         <Divider />
         <Menu.Item color="red">
           {/* <button onClick={onDelete}>Delete note</button> */}

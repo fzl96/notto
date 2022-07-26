@@ -55,13 +55,31 @@
   border: none;
   outline: none;
   border-radius: 0;
+  padding: 0;
 }
 
 .mantine-RichTextEditor-toolbar {
-  /* border-top: 1px black solid; */
-  border-radius: 0;
+  border-top: 1px black solid;
+  /* border-radius: 0; */
+  /* padding: 0; */
+}
+.mantine-RichTextEditor-toolbarInner {
+  border-top: 1px slategray solid;
+  border-bottom: 1px slategray solid;
 }
 
 .mantine-RichTextEditor-toolbarControl {
   /* margin-left: 20rem; */
+  border: none;
+}
+
+.mantine-bdajhj {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.ql-editor {
+  padding: 0;
 }

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import NoteId from "./pages/app/notes/NoteId";
 import AppLayout from "./components/AppLayout";
 import Main from "./pages/Main";
@@ -11,12 +11,15 @@ import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { useState } from "react";
 import type { ColorScheme } from "@mantine/core";
 import NewNotes from "./pages/app/notes/NewNotes";
+import { AnimatePresence } from 'framer-motion'
 
 function App() {
+  const location = useLocation();
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
+    console.log(location)
   return (
     <ColorSchemeProvider
       colorScheme={colorScheme}
@@ -27,24 +30,26 @@ function App() {
         withGlobalStyles
         withNormalizeCSS
       >
-        <Routes>
-          <Route element={<ProtectedRoutes />}>
-            <Route element={<AppLayout />}>
-              <Route
-                path="/app"
-                element={<Navigate to="/app/notes" replace />}
-              />
-              <Route path="/app/notes" element={<Notes />} />
-              <Route path="/app/notes/new" element={<NewNotes />} />
-              <Route path="/app/notes/:id" element={<NoteId />} />
+        {/* <AnimatePresence> */}
+          <Routes location={location} key={location.pathname}>
+            <Route element={<ProtectedRoutes />}>
+              <Route element={<AppLayout />}>
+                <Route
+                  path="/app"
+                  element={<Navigate to="/app/notes" replace />}
+                />
+                <Route path="/app/notes" element={<Notes />} />
+                <Route path="/app/notes/new" element={<NewNotes />} />
+                <Route path="/app/notes/:id" element={<NoteId />} />
+              </Route>
             </Route>
-          </Route>
 
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+        {/* </AnimatePresence> */}
       </MantineProvider>
     </ColorSchemeProvider>
   );

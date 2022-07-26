@@ -1,0 +1,67 @@
+.ProseMirror:focus { 
+ outline: none;
+}
+
+.ProseMirror > * + * {
+  margin-top: 0.75em;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding: 0 1rem;
+}
+
+.bubble-menu {
+  display: flex;
+  background-color: #0D0D0D;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.bubble-menu button {
+  border: none;
+  background: none;
+  color: #FFF;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0 0.2rem;
+  opacity: 0.6;
+}
+.bubble-menu :hover,
+.bubble-menu > .is-active {
+  opacity: 1;
+}
+.floating-menu {
+  display: flex;
+  background-color: #0D0D0D10;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+.floating-menu button {
+  border: none;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0 0.2rem;
+  opacity: 0.6;
+}
+.floating-menu:hover,
+.floating-menu > .is-active {
+  opacity: 1;
+}
+  
+
+.mantine-RichTextEditor-root {
+  border: none;
+  outline: none;
+  border-radius: 0;
+}
+
+.mantine-RichTextEditor-toolbar {
+  /* border-top: 1px black solid; */
+  border-radius: 0;
+}
+
+.mantine-RichTextEditor-toolbarControl {
+  /* margin-left: 20rem; */
+}

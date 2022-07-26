@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
 import { pinNote, deleteNote } from "../../utils/db-notes";
 import CardMenu from "./CardMenu";
+import { Link } from 'react-router-dom'
 
 interface Props {
   note: NoteType;
@@ -22,6 +23,11 @@ const Card: React.FC<Props> = ({ note }) => {
     createdAt = format(noteDate, "MMM dd");
   }
 
+  const removeHTMLTags = (str: string) => {
+    if (!str) return "";
+    return str.replace(/<[^>]*>/g, "");
+  }
+  
   return (
     <motion.div
       layout
@@ -44,16 +50,18 @@ const Card: React.FC<Props> = ({ note }) => {
         )}
         <CardMenu onDelete={() => deleteNote(note.id)} />
       </div>
+      <Link to={`${note.id}`} key={note.id}>
       <div className="flex flex-col justify-between h-full">
         <div>
           <h3 className="text-lg font-semibold">{note.title}</h3>
-          <p className="text-md">{note.body}</p>
+          <p className="text-md">{removeHTMLTags(note.body)}</p>
         </div>
         <div className="flex items-center gap-3">
           <AiOutlineCalendar />
           <p className="uppercase text-sm font-semibold">{createdAt}</p>
         </div>
       </div>
+      </Link>
     </motion.div>
   );
 };

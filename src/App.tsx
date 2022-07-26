@@ -11,7 +11,6 @@ import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { useState } from "react";
 import type { ColorScheme } from "@mantine/core";
 import NewNotes from "./pages/app/notes/NewNotes";
-import Awawa from './pages/Awawa'
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
@@ -38,7 +37,6 @@ function App() {
               <Route path="/app/notes" element={<Notes />} />
               <Route path="/app/notes/new" element={<NewNotes />} />
               <Route path="/app/notes/:id" element={<NoteId />} />
-              <Route path="/awawa" element={<Awawa />} />
             </Route>
           </Route>
 

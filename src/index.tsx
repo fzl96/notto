@@ -14,9 +14,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <NotesContextProvider>
-        <AnimatePresence>
-          <App />
-        </AnimatePresence>
+        <App />
       </NotesContextProvider>
     </BrowserRouter>
   </React.StrictMode>

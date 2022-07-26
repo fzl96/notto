@@ -4,14 +4,23 @@ import { Navigate, useNavigate } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import { db } from "../../../config/firebase";
 import Picker from "emoji-picker-react";
-import Tiptap from "../../../components/notes/Tiptap";
+import Tiptap from "../../../components/notes/TextEditor";
+import { motion } from "framer-motion";
+import { RichTextEditor } from "@mantine/rte";
+import '../../../styles/rte.css'
+import { useMantineColorScheme } from "@mantine/core";
+
+const initialValue =
+  "<p>Your initial <b>html value</b> or an empty string to init editor without value</p>";
 
 const NewNotes = () => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const [body, setBody] = useState(initialValue);
   const [chosenEmoji, setChosenEmoji] = useState(null);
 
   const navigate = useNavigate();
   const [title, setTitle] = useState("untitled");
-  const [body, setBody] = useState("empty");
 
   const onEmojiClick = (event: any, emojiObject: any) => {
     setChosenEmoji(emojiObject);
@@ -35,8 +44,10 @@ const NewNotes = () => {
 
   return (
     <>
-      <form
-        className={`w-full flex flex-col gap-5 bg-white h-full rounded-2xl pt-10 lg:px-20 px-7`}
+      <motion.form
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={`${dark ? 'bg-grayishDark' : "bg-white"} w-full flex flex-col gap-5 h-full rounded-2xl pt-10 lg:px-20 px-7`}
         onSubmit={handleSubmit}
       >
         <button type="submit">Submit</button>
@@ -45,13 +56,11 @@ const NewNotes = () => {
           placeholder="untitled"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <Tiptap />
-        {/* <TextareaAutosize
-          className="text-2xl resize-none bg-transparent focus:outline-none  w-full"
-          placeholder="type something here"
-          onChange={(e) => setBody(e.target.value)}
-        /> */}
-      </form>
+        <div className="pb-10">
+          <RichTextEditor value={body} onChange={setBody} />
+        </div>
+        {/* <Tiptap /> */}
+      </motion.form>
     </>
   );
 };

@@ -5,24 +5,20 @@ import {
   useEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import React from "react";
+import "../../styles/rte.css";
 
-const Tiptap = () => {
+const TextEditor = () => {
   const editor = useEditor({
     extensions: [StarterKit],
     content: `
       <p>
-        Try to select <em>this text</em> to see what we call the bubble menu.
-      </p>
-      <p>
-        Neat, isn’t it? Add an empty paragraph to see the floating menu.
+        type your text here
       </p>
     `,
   });
 
   return (
     <>
-      <p className="test">AW</p>
       {editor && (
         <BubbleMenu
           className="bubble-menu"
@@ -32,18 +28,30 @@ const Tiptap = () => {
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
             className={editor.isActive("bold") ? "is-active" : ""}
+            type="button"
           >
             Bold
           </button>
           <button
             onClick={() => editor.chain().focus().toggleItalic().run()}
             className={editor.isActive("italic") ? "is-active" : ""}
-          ></button>
+            type="button"
+          >
+            Italic
+          </button>
           <button
             onClick={() => editor.chain().focus().toggleStrike().run()}
             className={editor.isActive("strike") ? "is-active" : ""}
+            type="button"
           >
             Strike
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleCode().run()}
+            className={editor.isActive("code") ? "is-active" : ""}
+            type="button"
+          >
+            code
           </button>
         </BubbleMenu>
       )}
@@ -61,6 +69,7 @@ const Tiptap = () => {
             className={
               editor.isActive("heading", { level: 1 }) ? "is-active" : ""
             }
+            type="button"
           >
             H1
           </button>
@@ -71,12 +80,14 @@ const Tiptap = () => {
             className={
               editor.isActive("heading", { level: 2 }) ? "is-active" : ""
             }
+            type="button"
           >
             H2
           </button>
           <button
             onClick={() => editor.chain().focus().toggleBulletList().run()}
             className={editor.isActive("bulletList") ? "is-active" : ""}
+            type="button"
           >
             Bullet List
           </button>
@@ -88,4 +99,4 @@ const Tiptap = () => {
   );
 };
 
-export default Tiptap;
+export default TextEditor;

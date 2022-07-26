@@ -14,6 +14,7 @@ export const deleteNote = async (noteId: string) => {
   try {
     const noteRef = doc(db, `notes/${noteId}`);
     await deleteDoc(noteRef);
+    console.log("Note deleted");
   } catch (error) {
     console.error(error)
   }

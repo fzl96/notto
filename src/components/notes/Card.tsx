@@ -1,12 +1,12 @@
-import type { NoteType } from "../../utils/types";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { format } from "date-fns";
 import { useMantineColorScheme } from "@mantine/core";
-import { AnimatePresence, motion } from "framer-motion";
+import { format } from "date-fns";
+import { motion } from "framer-motion";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
-import { pinNote, deleteNote } from "../../utils/db-notes";
+import { Link } from "react-router-dom";
+import { deleteNote, pinNote } from "../../utils/db-notes";
+import type { NoteType } from "../../utils/types";
 import CardMenu from "./CardMenu";
-import { Link } from 'react-router-dom'
 
 interface Props {
   note: NoteType;
@@ -26,8 +26,8 @@ const Card: React.FC<Props> = ({ note }) => {
   const removeHTMLTags = (str: string) => {
     if (!str) return "";
     return str.replace(/<[^>]*>/g, "");
-  }
-  
+  };
+
   return (
     <motion.div
       layout
@@ -36,7 +36,7 @@ const Card: React.FC<Props> = ({ note }) => {
       exit={{ opacity: 0 }}
       className={`${
         dark ? "bg-grayishDark" : "bg-white"
-      } rounded-2xl pt-2 px-5 pb-5 shadow-sm min-h-[12rem] flex flex-col justify-between`}
+      } rounded-2xl pt-3 px-5 pb-5 shadow-sm lg:min-h-[12rem] md:min-h-[12rem] flex flex-row-reverse justify-between lg:flex-col md:flex-col gap-3`}
     >
       <div className="flex gap-3 items-center justify-end">
         {note.pinned ? (
@@ -50,18 +50,18 @@ const Card: React.FC<Props> = ({ note }) => {
         )}
         <CardMenu onDelete={() => deleteNote(note.id)} />
       </div>
-      <Link to={`${note.id}`} key={note.id}>
-      <div className="flex flex-col justify-between h-full">
-        <div>
-          <h3 className="text-lg font-semibold">{note.title}</h3>
-          <p className="text-md">{removeHTMLTags(note.body).slice(0, 70)}</p>
-        </div>
+      <div className="flex flex-col justify-between h-full gap-1">
+        <Link to={`${note.id}`} key={note.id}>
+          <div>
+            <h3 className="text-lg font-semibold">{note.title}</h3>
+            <p className="text-md hidden lg:block md:block">{removeHTMLTags(note.body).slice(0, 70)}</p>
+          </div>
+        </Link>
         <div className="flex items-center gap-3">
           <AiOutlineCalendar />
           <p className="uppercase text-sm font-semibold">{createdAt}</p>
         </div>
       </div>
-      </Link>
     </motion.div>
   );
 };

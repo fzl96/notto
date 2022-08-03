@@ -1,11 +1,27 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useReducer,
+} from "react";
 import { db } from "../../../../config/firebase";
-import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
+import {
+  collection,
+  query,
+  onSnapshot,
+  orderBy,
+} from "firebase/firestore";
 import type { NoteType } from "../../../../utils/types";
+import { deleteNote } from "../../../../utils/db-notes";
 
 export const NotesContext = createContext<NoteType[]>([]);
 
-export const NotesContextProvider = ({ children }: any) => {
+interface NotesContextProviderProps {
+  children: React.ReactNode;
+}
+
+export const NotesContextProvider = ({ children }: NotesContextProviderProps) => {
   const [notes, setNotes] = useState<NoteType[]>([]);
 
   useEffect(() => {
@@ -20,7 +36,6 @@ export const NotesContextProvider = ({ children }: any) => {
     });
     return () => unsub();
   }, []);
-
 
   return (
     <NotesContext.Provider value={notes}>{children}</NotesContext.Provider>

@@ -32,9 +32,9 @@ const NoteId = () => {
 
   return (
     <motion.div
-      // initial={{ opacity: 0, y: 60 }}
-      // animate={{ opacity: 1, y: 0 }}
-      // exit={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 60 }}
       className={`${
         dark ? "bg-grayishDark3" : "bg-white"
       } lg:pt-10 lg:px-10 h-full w-full rounded-2xl shadow-lg`}

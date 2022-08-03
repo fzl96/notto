@@ -75,7 +75,7 @@ const Shell: React.FC<Props> = ({ children }) => {
     //   >
     <>
       <div className="lg:w-96 md:w-80 hidden h-full fixed bg-white">test</div>
-      <div className={`bg-grayish lg:ml-96 min-h-screen lg:mb-0 md:mb-0 mb-[6rem]`}>{children}</div>
+      <div className={`bg-grayish lg:ml-96 min-h-screen lg:pb-0 md:pb-0 pb-[6rem]`}>{children}</div>
       <div className={`w-full bg-white h-20 bottom-0 fixed border-t-2 lg:hidden md:hidden`}>
         test
       </div>

@@ -31,9 +31,9 @@ const Card: React.FC<Props> = ({ note }) => {
   return (
     <motion.div
       layout
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={`${
         dark ? "bg-grayishDark" : "bg-white"
       } rounded-2xl pt-3 px-5 pb-5 shadow-sm lg:min-h-[12rem] md:min-h-[12rem] flex flex-row-reverse justify-between lg:flex-col md:flex-col gap-3`}

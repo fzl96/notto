@@ -40,22 +40,20 @@ function App() {
               />
               <Route path="/app/notes" element={<Notes />} />
 
-              {!matches ? (
+              {!matches && (
                 <>
                   <Route path="/app/notes/new" element={<NewNotes />} />
                   <Route path="/app/notes/:id" element={<NoteId />} />
                 </>
-              ) : (
-                <></>
               )}
+              
             </Route>
-            {matches ? (
+
+            {matches && (
               <>
                 <Route path="/app/notes/new" element={<NewNotes />} />
                 <Route path="/app/notes/:id" element={<NoteId />} />
               </>
-            ) : (
-              <></>
             )}
           </Route>
 

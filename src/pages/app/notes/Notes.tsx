@@ -17,21 +17,22 @@ const Notes = () => {
 
   return (
     <>
-    <AnimatePresence>
-
+      <AnimatePresence>
         <motion.div
-          // initial={{ opacity: 0, y: -60 }}
-          // animate={{ opacity: 1, y: 0 }}
-          // exit={{ opacity: 0, y: -60 }}
+          initial={{ opacity: 0, y: -60 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -60 }}
           className="flex flex-col gap-5 lg:px-10 h-full"
         >
+          <div className="p-5">
+
           <div className="flex flex-col gap-5">
             {pinnedNotes.length !== 0 ? (
               <>
                 <h1 className="text-2xl  font-semibold ml-1">Pinned</h1>
                 <motion.div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                   {pinnedNotes.map((note) => {
-                    return <Card note={note} key={note.id}/>;
+                    return <Card note={note} key={note.id} />;
                   })}
                 </motion.div>
               </>
@@ -50,8 +51,9 @@ const Notes = () => {
               </Link>
             </div>
           </div>
+          </div>
         </motion.div>
-    </AnimatePresence>
+      </AnimatePresence>
     </>
   );
 };

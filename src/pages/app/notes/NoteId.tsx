@@ -37,7 +37,7 @@ const NoteId = () => {
       exit={{ opacity: 0, y: 60 }}
       className={`${
         dark ? "bg-grayishDark3" : "bg-white"
-      } lg:pt-10 lg:px-10 h-full w-full rounded-2xl shadow-lg`}
+      } lg:pt-10 lg:px-10 min-h-[95vh] w-full rounded-2xl shadow-lg`}
     >
       <div className="flex flex-col gap-4">
         <button

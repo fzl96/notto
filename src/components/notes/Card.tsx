@@ -36,19 +36,10 @@ const Card: React.FC<Props> = ({ note }) => {
       exit={{ opacity: 0 }}
       className={`${
         dark ? "bg-grayishDark" : "bg-white"
-      } rounded-2xl pt-3 px-5 pb-5 shadow-sm lg:min-h-[12rem] md:min-h-[12rem] flex flex-row-reverse justify-between lg:flex-col md:flex-col gap-3`}
+      } rounded-2xl pt-3 px-5 pb-5 shadow-sm flex flex-row-reverse justify-between lg:flex-col md:flex-col gap-3`}
     >
       <div className="flex gap-3 items-center justify-end">
-        {note.pinned ? (
-          <button onClick={() => pinNote(note.id, note.pinned)}>
-            <BsPinAngleFill />
-          </button>
-        ) : (
-          <button onClick={() => pinNote(note.id, note.pinned)}>
-            <BsPinAngle />
-          </button>
-        )}
-        <CardMenu onDelete={() => deleteNote(note.id)} />
+        <CardMenu onDelete={() => deleteNote(note.id)} noteId={note.id} isPinned={note.pinned}/>
       </div>
       <div className="flex flex-col justify-between h-full gap-1">
         <Link to={`${note.id}`} key={note.id}>

@@ -1,13 +1,21 @@
-import { useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import TextareaAutosize from "react-textarea-autosize";
-import Picker from "emoji-picker-react";
-import Tiptap from "../../../components/notes/TextEditor";
-import { AnimatePresence, motion } from "framer-motion";
-import { RichTextEditor } from "@mantine/rte";
-import "../../../styles/rte.css";
 import { useMantineColorScheme } from "@mantine/core";
+import { RichTextEditor } from "@mantine/rte";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import TextareaAutosize from "react-textarea-autosize";
+import FolderSelection from "../../../components/notes/FolderSelection";
+import "../../../styles/rte.css";
 import { addNote } from "../../../utils/db-notes";
+
+const people = [
+  { name: "Wade Cooper" },
+  { name: "Arlene Mccoy" },
+  { name: "Devon Webb" },
+  { name: "Tom Cook" },
+  { name: "Tanya Fox" },
+  { name: "Hellen Schmidt" },
+];
 
 const initialValue =
   "<p>Your initial <b>html value</b> or an empty string to init editor without value</p>";
@@ -40,13 +48,12 @@ const NewNotes = () => {
     <>
       <AnimatePresence>
         <motion.form
-          // key={title}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 60 }}
           className={`${
             dark ? "bg-grayishDark" : "bg-white"
-          } w-full flex flex-col gap-5 h-full rounded-2xl pt-10 lg:px-20 px-7`}
+          } w-full flex flex-col gap-5 min-h-[95vh] rounded-2xl pt-10 lg:px-20 px-7`}
           onSubmit={handleSubmit}
         >
           <button type="submit">Submit</button>
@@ -57,10 +64,17 @@ const NewNotes = () => {
             onChange={(e) => setTitle(e.target.value)}
             autoFocus
           />
+          <div>
+            <p className="flex items-center gap-10">
+              Folder
+              <span>
+                <FolderSelection />
+              </span>
+            </p>
+          </div>
           <div className="pb-10">
             <RichTextEditor value={body} onChange={setBody} />
           </div>
-          {/* <Tiptap /> */}
         </motion.form>
       </AnimatePresence>
     </>

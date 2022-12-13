@@ -5,6 +5,10 @@ export interface NoteType {
   createdAt: any,
   pinned: boolean
 }
+type Notes {
+  id: string,
+  title: string
+}
 export interface NotesContextType {
   notes: NoteType[];
 }
